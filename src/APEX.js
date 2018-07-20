@@ -8,6 +8,8 @@ import {
   OrderEventSubject
 } from './subjects';
 
+import { endpoints } from './helpers/endpoints';
+
 class APEX {
   constructor(
     url = 'wss://api_apexqa.alphapoint.com/WSGateway/',
@@ -19,6 +21,8 @@ class APEX {
   ) {
     this.seq = 0;
     this.callbacks = {};
+    this.defaultCallback = config.defaultCallback;
+
     this.ws = webSocket({
       url: url,
       WebSocketCtor: WebSocket,
@@ -35,7 +39,6 @@ class APEX {
         delete this.callbacks[data.i];
       }
     });
-    this.defaultCallback = config.defaultCallback;
 
     this.level1 = new Level1Subject(this);
     this.level2 = new Level2Subject(this);
@@ -70,5 +73,32 @@ class APEX {
     this.ws.socket.close();
   }
 }
+
+endpoints.forEach(endpoint => {
+  APEX.prototype[endpoint] = function(
+    params = {
+      OMSId: 1
+    }
+  ) {
+    return new Promise((resolve, reject) => {
+      this.RPCCall(endpoint, { OMSID: 1, ...params }, x => {
+        if (x.m === 5) {
+          reject(x);
+        } else {
+          try {
+            const y = JSON.parse(x.o);
+            resolve(y);
+          } catch (e) {
+            if (x.o) {
+              resolve(x.o);
+            } else {
+              resolve(x);
+            }
+          }
+        }
+      });
+    });
+  };
+});
 
 export { APEX };
