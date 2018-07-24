@@ -58,6 +58,7 @@ class APEX {
     this.seq += 2;
     this.ws.next(JSON.stringify(frame));
   }
+
   RPCPromise(command, params) {
     return new Promise((resolve, reject) => {
       this.RPCCall(command, params, result => {
@@ -69,6 +70,7 @@ class APEX {
       });
     });
   }
+
   closeConnection() {
     this.ws.socket.close();
   }
