@@ -24,7 +24,7 @@ class APEX {
     this.defaultCallback = config.defaultCallback;
 
     this.ws = webSocket({
-      url: url,
+      url,
       WebSocketCtor: WebSocket,
       openObserver: {
         next: e => config.onopen(e)

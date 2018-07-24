@@ -17,16 +17,16 @@ class Level1Subject {
     );
     this.observable = Observable.create(obs => {
       context.ws.filter(x => x.n === 'Level1UpdateEvent').subscribe(x => {
-        let l = JSON.parse(x.o);
+        const l = JSON.parse(x.o);
         obs.next(new Level1(l));
       });
-      return instrumentId => {
+      return () => {
         context.level1.level1InternalIds.forEach(x =>
           context.unsubscribeLevel1(x)
         );
       };
     });
-    let sub = Subject.create(this.observer, this.observable);
+    const sub = Subject.create(this.observer, this.observable);
     sub.level1InternalIds = this.level1InternalIds;
     return sub;
   }

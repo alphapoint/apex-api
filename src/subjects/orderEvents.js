@@ -8,7 +8,7 @@ import { Order } from '../classes';
 class OrderEventSubject {
   constructor(context) {
     this.observer = Subscriber.create(
-      x => {},
+      () => {},
       error => console.log(error),
       () => console.log('complete')
     );
@@ -18,7 +18,7 @@ class OrderEventSubject {
         obs.next(new Order(l));
       });
     });
-    let sub = Subject.create(this.observer, this.observable);
+    const sub = Subject.create(this.observer, this.observable);
     return sub;
   }
 }

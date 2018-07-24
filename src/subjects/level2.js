@@ -31,13 +31,13 @@ class Level2Subject {
         obs.next(orders);
       });
 
-      return instrumentId => {
+      return () => {
         context.level2.level2InternalIds.forEach(x =>
           context.unsubscribeLevel2(x)
         );
       };
     });
-    let sub = Subject.create(this.observer, this.observable);
+    const sub = Subject.create(this.observer, this.observable);
     sub.level2InternalIds = this.level2InternalIds;
     return sub;
   }

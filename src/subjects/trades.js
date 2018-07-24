@@ -24,13 +24,13 @@ class TradeSubject {
         const l = JSON.parse(x.o);
         l.forEach(x => obs.next(new Trade(x)));
       });
-      return instrumentId => {
+      return () => {
         context.trades.tradesInternalId.forEach(x =>
           context.unsubscribeTrades(x)
         );
       };
     });
-    let sub = Subject.create(this.observer, this.observable);
+    const sub = Subject.create(this.observer, this.observable);
     sub.tradesInternalId = this.tradesInternalId;
     return sub;
   }

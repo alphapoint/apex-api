@@ -11,6 +11,7 @@
     "prettier": "prettier --write --print-width 80 --single-quote --jsx-bracket-same-line \"{src,test}/**/*.js\""
   },
   "dependencies": {
+    "eslint-config-problems": "^1.1.0",
     "rxjs": "^5.4.3",
     "universal-websocket-client": "^1.0.1"
   },

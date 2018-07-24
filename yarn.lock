@@ -1330,6 +1330,10 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
+eslint-config-problems@^1.1.0:
+  version "1.1.0"
+  resolved "http://nexus.alphapoint.com:8087/repository/npm-group/eslint-config-problems/-/eslint-config-problems-1.1.0.tgz#cf06846764472686203c2f63587036a80c3c3a88"
+
 eslint-loader@1.7.1:
   version "1.7.1"
   resolved "http://nexus.alphapoint.com:8087/repository/npm-group/eslint-loader/-/eslint-loader-1.7.1.tgz#50b158dd6272dcefb97e984254837f81a5802ce0"

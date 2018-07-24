@@ -6,7 +6,7 @@ import 'rxjs/add/operator/filter';
 class AccountEventsSubject {
   constructor(context) {
     this.observer = Subscriber.create(
-      x => {},
+      () => {},
       error => console.log(error),
       () => console.log('complete')
     );
@@ -15,7 +15,7 @@ class AccountEventsSubject {
         obs.next(x);
       });
     });
-    let sub = Subject.create(this.observer, this.observable);
+    const sub = Subject.create(this.observer, this.observable);
     return sub;
   }
 }
