@@ -55,7 +55,7 @@ const permissions = [
   'SubscribeLevel2',
   'SubscribeTicker',
   'SubscribeTrades',
-  'TransferFunds
+  'TransferFunds',
   'UnSubscribeLevel1',
   'UnsubscribeLevel2',
   'UnSubscribeTicker',
