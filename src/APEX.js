@@ -83,7 +83,9 @@ endpoints.forEach(endpoint => {
     }
   ) {
     return new Promise((resolve, reject) => {
-      this.RPCCall(endpoint, { OMSID: 1, ...params }, x => {
+      const payload =
+        endpoint === 'AuthenticateUser' ? params : { OMSID: 1, ...params };
+      this.RPCCall(endpoint, payload, x => {
         if (x.m === 5) {
           reject(x);
         } else {
