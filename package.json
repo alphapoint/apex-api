@@ -1,6 +1,6 @@
 {
   "name": "apex-api",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "alphapoint api",
   "main": "lib/alphapoint.min.js",
   "scripts": {
