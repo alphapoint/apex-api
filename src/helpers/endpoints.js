@@ -22,6 +22,7 @@ const permissions = [
   'GetDepositRequestInfoTemplate',
   'GetDepositTickets',
   'GetInstruments',
+  'GetOperatorLoyaltyFeeConfigsForOms',
   'GetOMSs',
   'GetOpenOrders',
   'GetOpenTradeReports',
@@ -69,6 +70,7 @@ const permissions = [
   'UnsubscribeLevel2',
   'UnSubscribeTicker',
   'UnSubscribeTrades',
+  'UpdateAccount',
   'ValidateUserRegistration',
   'WebAuthenticateUser'
 ];
