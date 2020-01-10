@@ -37,6 +37,13 @@ const apex = new APEX(url, options)
 </script>
 ```
 
+ES6 Import
+
+```javascript
+import { APEX } from 'apex-api';
+const apex = new APEX(url, options);
+```
+
 The options object looks like this, is optional (using the default values below) and should be pretty self-explanatory. The default callback is useful for when you mainly just want to log output of your commands.
 
 ```javascript
