@@ -84,7 +84,7 @@ try {
 
 ### Convenience Functions
 
-The library also creates some convenience functions for commonly used RPC commands. Usage looks as follows
+The library also creates some convenience functions for commonly used RPC commands. Usage looks as follows. The convenience functions all return a promise.
 
 `apex.<Command>(<params>)`
 
