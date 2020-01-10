@@ -46,6 +46,7 @@ const permissions = [
   'GetWithdrawTemplateTypes',
   'GetWithdrawTickets',
   'LogOut',
+  'Ping',
   'RegisterNewUser',
   'RejectRequestTransferFunds',
   'RemoveUserAPIKey',

@@ -1,14 +1,13 @@
 const WebSocket = require('universal-websocket-client');
 import { webSocket } from 'rxjs/observable/dom/webSocket';
-import {
-  Level1Subject,
-  Level2Subject,
-  TradesSubject,
-  AccountEventsSubject,
-  OrderEventSubject
-} from './subjects';
-
 import { endpoints } from './helpers/endpoints';
+import Level1 from './classes/Level1';
+import Level2 from './classes/Level2';
+import Trade from './classes/Trade';
+import Order from './classes/Order';
+
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
 
 class APEX {
   constructor(
@@ -16,21 +15,27 @@ class APEX {
     config = {
       onopen: () => {},
       onclose: () => {},
-      defaultCallback: msg => console.log(msg)
+      onerror: () => {},
+      defaultCallback: () => {},
+      debug: false
     }
   ) {
+    const { onopen, onclose, onerror, defaultCallback, debug } = config;
     this.seq = 0;
     this.callbacks = {};
-    this.defaultCallback = config.defaultCallback;
-
+    this.defaultCallback = defaultCallback;
+    this.debug = debug;
     this.ws = webSocket({
       url,
       WebSocketCtor: WebSocket,
       openObserver: {
-        next: e => config.onopen(e)
+        next: onopen ? onopen : () => {}
+      },
+      errorObserver: {
+        next: onerror ? onerror : () => {}
       },
       closeObserver: {
-        next: e => config.onclose(e)
+        next: onclose ? onclose : () => {}
       }
     });
     this.ws.subscribe(data => {
@@ -39,12 +44,41 @@ class APEX {
         delete this.callbacks[data.i];
       }
     });
-
-    this.level1 = new Level1Subject(this);
-    this.level2 = new Level2Subject(this);
-    this.trades = new TradesSubject(this);
-    this.accountEvents = new AccountEventsSubject(this);
-    this.orderEvents = new OrderEventSubject(this);
+    // Just use observables rather than subjects
+    this.Level1 = this.ws
+      .filter(x => x.n === 'Level1UpdateEvent')
+      .map(({ o }) => {
+        return new Level1(JSON.parse(o));
+      });
+    this.Level2 = this.ws
+      .filter(x => x.n === 'Level2UpdateEvent')
+      .map(({ o }) => new Level2(JSON.parse(o)));
+    this.Trades = this.ws
+      .filter(x => x.n === 'TradeDataUpdateEvent')
+      .map(({ o }) => new Trade(JSON.parse(o)));
+    this.Ticker = this.ws
+      .filter(x => x.n === 'TickerDataUpdateEvent')
+      .map(({ o }) => JSON.parse(o));
+    this.OrderEvents = this.ws
+      .filter(x => ['OrderStateEvent'].includes(x.n))
+      .map(({ o }) => new Order(JSON.parse(o)));
+    this.AccountEvents = this.ws
+      .filter(x =>
+        [
+          'AccountPositionEvent',
+          'CancelAllOrdersRejectEvent',
+          'CancelOrderRejectEvent',
+          'CancelReplaceOrderRejectEvent',
+          'MarketStateUpdate',
+          'NewOrderRejectEvent',
+          'OrderStateEvent',
+          'OrderTradeEvent',
+          'OrderTradeEvent',
+          'PendingDepositUpdate',
+          'TransactionEvent'
+        ].includes(x.n)
+      )
+      .map(({ o }) => JSON.parse(o));
   }
 
   RPCCall(functionName, paramObject, callback = this.defaultCallback) {
@@ -54,15 +88,22 @@ class APEX {
       n: functionName,
       o: JSON.stringify(paramObject)
     };
+    if (this.debug) {
+      console.log(`DBG-⬆︎: ${JSON.stringify(frame)}`);
+    }
     this.callbacks[this.seq] = callback;
     this.seq += 2;
     this.ws.next(JSON.stringify(frame));
   }
 
   RPCPromise(command, params) {
+    const { debug } = this;
     return new Promise((resolve, reject) => {
       this.RPCCall(command, params, result => {
         if (result.m === 5) {
+          if (debug) {
+            console.log(`DBG-⬇︎: ${JSON.stringify(result)}`);
+          }
           reject(result);
         } else {
           resolve(result);
@@ -83,8 +124,12 @@ endpoints.forEach(endpoint => {
     }
   ) {
     return new Promise((resolve, reject) => {
+      const { debug } = this;
       this.RPCCall(endpoint, params, x => {
         if (x.m === 5) {
+          if (debug) {
+            console.log(`DBG-⬇︎: ${JSON.stringify(x)}`);
+          }
           reject(x);
         } else {
           try {

@@ -1,8 +1,8 @@
 {
   "name": "apex-api",
-  "version": "4.0.3",
-  "description": "alphapoint api",
-  "main": "lib/alphapoint.min.js",
+  "version": "5.0.0",
+  "description": "A simple API client for use with the APEX Server",
+  "main": "lib/apex-api.min.js",
   "scripts": {
     "deploy": "npm run build && git commit -a -m 'updating version' && git push && npm version patch && npm publish",
     "build": "webpack --env build",
