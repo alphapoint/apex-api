@@ -23,8 +23,8 @@ To use this library, you simply create a new instance of the APEX class, as foll
 Node
 
 ```javascript
-const {APEX} = require('apex-api)
-const apex = new APEX(url, options)
+const { APEX } = require('apex-api');
+const apex = new APEX(url, options);
 ```
 
 Browser

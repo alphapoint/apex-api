@@ -8,7 +8,7 @@
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
-    "prettier": "prettier --write --print-width 80 --single-quote --jsx-bracket-same-line \"{src,test}/**/*.js\""
+    "prettier": "prettier --write --print-width 80 --single-quote \"{src,test}/**/*.js\""
   },
   "dependencies": {
     "rxjs": "^5.4.3",
@@ -38,13 +38,16 @@
     "yargs": "7.1.0"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/alphapoint/apex-api"
   },
   "files": [
     "lib"
   ],
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "Alphapoint"
+  ],
   "author": "Josh Rossi",
   "publishConfig": {
     "registry": "http://nexus.alphapoint.com:8087/repository/npm-private/"
