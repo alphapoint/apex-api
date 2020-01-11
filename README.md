@@ -114,9 +114,14 @@ While there are a few specialized Observables, they are all getting the data fro
 This means that you can create custom Observables of your own as follows:
 
 ```javascript
-await  apex
-        .ws
-        .filter(msg => msg.n === 'NewOrderRejectEvent')
-        .map(({Price, Quantity})=> {Price, Quantity})
-        .subscribe(handlerFunction)
+apex.ws
+  .filter(msg => msg.n === 'NewOrderRejectEvent')
+  .map(({ Price, Quantity }) => {
+    Price, Quantity;
+  })
+  .subscribe(handlerFunction);
 ```
+
+### Notes
+
+To enable async/await using the Node REPL, run node with the flag `--experimental-repl-await`
