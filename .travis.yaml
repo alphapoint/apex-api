@@ -1,0 +1,17 @@
+language: node_js
+
+node_js:
+  - "10"
+
+notifications:
+  email:
+    - josh.rossi@alphapoint.com
+
+before_script:
+  - npm build
+
+deploy:
+  provider: script
+  script: bash deploy.sh
+  on:
+    branch: master
