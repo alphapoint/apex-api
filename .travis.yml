@@ -8,11 +8,11 @@ install:
   - npm install
 
 before_script:
-  - "before..."
+  - echo before...
 
 script:
   - npm run build
   - npm run publish
 
 after_script:
-  - "after..."
+  - echo after...
