@@ -6,7 +6,8 @@ notifications:
 
 script:
   - npm run build
-  - npm version patch
+  - npm version patch -m "Bumping to %s"
+  - git push origin master
 
 deploy:
   provider: npm
