@@ -4,7 +4,7 @@
   "description": "A simple API client for use with the APEX Server",
   "main": "lib/apex-api.min.js",
   "scripts": {
-    "deploy": "npm run build && git commit -a -m 'updating version' && git push && npm version patch && npm publish",
+    "deploy": "npm run build && git commit -a -m 'updating version' && npm version patch && git push && npm publish",
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
