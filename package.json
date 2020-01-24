@@ -1,6 +1,6 @@
 {
   "name": "apex-api",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "A simple API client for use with the APEX Server",
   "main": "lib/apex-api.min.js",
   "scripts": {
