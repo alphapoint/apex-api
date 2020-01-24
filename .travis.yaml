@@ -8,8 +8,9 @@ notifications:
     - josh.rossi@alphapoint.com
 
 before_script:
-  - npm build
 
+script:
+  - npm run build
 deploy:
   provider: script
   script: bash deploy.sh
