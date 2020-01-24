@@ -6,7 +6,7 @@ notifications:
 
 script:
   - npm run build
-  - nvm version patch
+  - npm version patch
   - git commit -am 'Updating Version'
   - git push
 
