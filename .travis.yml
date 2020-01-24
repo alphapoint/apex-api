@@ -12,7 +12,7 @@ before_script:
 
 script:
   - npm run build
-  - npm version bump
+  - npm version patch
   - npm publish
 
 after_script:
