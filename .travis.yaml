@@ -7,10 +7,18 @@ notifications:
   email:
     - josh.rossi@alphapoint.com
 
+install:
+  - npm install
+
 before_script:
+  - echo "before..."
 
 script:
   - npm run build
+
+after_script:
+  - echo "after..."
+
 deploy:
   provider: script
   script: bash deploy.sh
