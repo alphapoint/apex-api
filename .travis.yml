@@ -6,7 +6,9 @@ notifications:
 
 script:
   - npm run build
-  - echo $NPM_TOKEN
+  - nvm version patch
+  - git commit -am 'Updating Version'
+  - git push
 
 deploy:
   provider: npm
