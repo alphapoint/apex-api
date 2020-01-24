@@ -5,7 +5,7 @@ notifications:
     - josh.rossi@alphapoint.com
 
 script:
-  - npm version patch -m "Bumping to %s"
+  - npm version patch -m "Bumping to version  %s"
 
 before_deploy:
   - npm run build
