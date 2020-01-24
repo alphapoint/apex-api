@@ -13,4 +13,4 @@ script:
 deploy:
   provider: npm
   email: "josh.rossi@alphapoint.com"
-  api_key: "NpmToken.52054477-8d64-391a-ab68-09b222005524"
+  api_key: "52054477-8d64-391a-ab68-09b222005524"
