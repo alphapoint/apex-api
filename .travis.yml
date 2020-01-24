@@ -7,8 +7,6 @@ notifications:
 script:
   - npm run build
   - npm version patch
-  - git commit -am 'Updating Version'
-  - git push
 
 deploy:
   provider: npm
