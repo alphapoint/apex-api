@@ -1,19 +1,8 @@
 language: node_js
+node_js:
+  - "12.13"
 
-notifications:
-  email:
-    - josh.rossi@alphapoint.com
-
-install:
-  - npm install
-
-before_script:
-  - echo before...
-
-script:
-  - npm run build
-  - npm version patch
-  - npm publish
-
-after_script:
-  - echo after...
+deploy:
+  provider: npm
+  email: "josh.rossi@alphapoint.com"
+  api_key: "NpmToken.52054477-8d64-391a-ab68-09b222005524"
