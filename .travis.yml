@@ -1,8 +1,5 @@
 language: node_js
 
-node_js:
-  - "10"
-
 notifications:
   email:
     - josh.rossi@alphapoint.com
@@ -11,13 +8,14 @@ install:
   - npm install
 
 before_script:
-  - echo "before..."
+  - "before..."
 
 script:
   - npm run build
+  - npm run publish
 
 after_script:
-  - echo "after..."
+  - "after..."
 
 deploy:
   provider: script
