@@ -9,5 +9,7 @@ install:
 
 script:
   - npm run build
+  - ls -la
+  - git status
   - npm version patch
   - npm publish
