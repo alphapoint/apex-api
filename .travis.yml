@@ -9,7 +9,8 @@ install:
 
 script:
   - npm run build
-  - ls -la
+  - git commit -a -m 'Updating Version'
   - git status
   - npm version patch
   - npm publish
+  - git push
