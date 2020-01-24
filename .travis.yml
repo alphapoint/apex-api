@@ -5,10 +5,12 @@ notifications:
     - josh.rossi@alphapoint.com
 
 script:
-  - npm run build
   - npm version patch -m "Bumping to %s"
   - git push origin master
 
+before_deploy:
+  - npm run build
+  
 deploy:
   provider: npm
   edge: true
