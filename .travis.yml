@@ -11,4 +11,4 @@ deploy:
   provider: npm
   skip_cleanup: true
   email: "josh.rossi@alphapoint.com"
-  api_key: "52054477-8d64-391a-ab68-09b222005524"
+  api_key: $NPM_TOKEN
