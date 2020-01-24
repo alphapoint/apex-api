@@ -16,9 +16,3 @@ script:
 
 after_script:
   - "after..."
-
-deploy:
-  provider: script
-  script: bash deploy.sh
-  on:
-    branch: master
