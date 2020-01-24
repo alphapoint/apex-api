@@ -4,9 +4,6 @@ notifications:
   email:
     - josh.rossi@alphapoint.com
 
-install:
-  - npm install
-
 script:
   - npm run build
 
