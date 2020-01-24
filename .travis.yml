@@ -6,7 +6,7 @@ notifications:
 
 script:
   - npm run build
-  - $NPM_TOKEN
+  - echo $NPM_TOKEN
 
 deploy:
   provider: npm
