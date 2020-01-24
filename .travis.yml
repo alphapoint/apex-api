@@ -6,9 +6,11 @@ notifications:
 
 script:
   - npm run build
+  - $NPM_TOKEN
 
 deploy:
   provider: npm
+  edge: true
   skip_cleanup: true
   email: "josh.rossi@alphapoint.com"
   api_key: $NPM_TOKEN
