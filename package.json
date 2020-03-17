@@ -1,5 +1,5 @@
 {
-  "name": "apex-api",
+  "name": "alphapoint-apex-api",
   "version": "5.0.13",
   "description": "A simple API client for use with the APEX Server",
   "main": "lib/apex-api.min.js",
