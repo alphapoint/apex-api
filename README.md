@@ -4,16 +4,12 @@ This library is a useful tool for interacting with Alphapoint's JSON-RPC over WS
 
 ## Installation
 
-To install this library
+To install this library, first you will need to have nodejs installed, then you will need your .npmrc file to be configured to point at our private npm repo (Nexus). Lastly, you can install this package globally so it will always be available. If you want to use it on a case by case basis, you can add the .npmrc file to an individual package, and install it locally.
+
+To install it, use the commands below, adding -g if you want to install globally
 
 ```bash
-npm install apex-api
-```
-
-or
-
-```bash
-yarn add apex-api
+npm install (-g) apex-api
 ```
 
 ## Usages
