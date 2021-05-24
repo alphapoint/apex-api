@@ -121,3 +121,6 @@ apex.ws
 ### Notes
 
 To enable async/await using the Node REPL, run node with the flag `--experimental-repl-await`
+
+
+[![asciicast](https://asciinema.org/a/RSiA1CK4OTLETJkMeVxJkoEU4.svg)](https://asciinema.org/a/RSiA1CK4OTLETJkMeVxJkoEU4)
