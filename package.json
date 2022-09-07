@@ -48,5 +48,8 @@
   "keywords": [
     "Alphapoint"
   ],
-  "author": "Josh Rossi"
+  "author": "Josh Rossi",
+  "publishConfig": {
+    "registry": "http://nexus.alphapoint.com:8087/repository/npm-private/"
+  }
 }
